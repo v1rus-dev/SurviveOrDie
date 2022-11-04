@@ -199,6 +199,10 @@ GameObject:
   - component: {fileID: 1551026258400427788}
   - component: {fileID: 1122307321}
   - component: {fileID: 1122307322}
+  - component: {fileID: 1667245918}
+  - component: {fileID: 1667245919}
+  - component: {fileID: 1597123179848785523}
+  - component: {fileID: -686842065644718031}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -270,7 +274,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2610841076048744259}
   checkGroundPlace: {fileID: 1210299679062200536}
   mouseSensitivity: 3
-  movementSpeed: 5
+  movementSpeed: 6
   jumpSpeed: 5
   mass: 1
 --- !u!114 &1122307316
@@ -298,7 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7592938b69b4f4fa6872af40f55e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 3585132134925770068, guid: deba94e91c8f9e144b592448609c3599,
+    type: 3}
 --- !u!114 &1122307321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5b67f95ece41c89b2208ac40d2868a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseText: {fileID: 0}
+  UseText: {fileID: 7502937793016939042, guid: e1a91240aeaf55e4d8141d6d1c8bf0dd, type: 3}
   LookAt: {fileID: 1265087356}
   MaxUseDistance: 2
 --- !u!114 &1122307322
@@ -328,11 +333,93 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoTypes:
   - ammoType: 1
-    ammoAmount: 30
+    ammoAmount: 2
   - ammoType: 2
     ammoAmount: 15
   - ammoType: 3
     ammoAmount: 10
+--- !u!114 &1667245918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863060943279287538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2468c275af44f291052ad58acd7b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1667245919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863060943279287538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150d168315d44c1aa7a5eb9602ac167c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookFrom: {fileID: 1265087356}
+  maxDistance: 2
+--- !u!114 &1597123179848785523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863060943279287538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -686842065644718031}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-686842065644718031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863060943279287538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &8648956037796706197
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587398622996131495}
+  - component: {fileID: 1774901345}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -367,6 +455,19 @@ Transform:
   m_Father: {fileID: 2610841076048744259}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1774901345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648956037796706197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe1379fe83b6184db897dc20a0b1824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 0
 --- !u!1 &9038215535741438784
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ammoType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2120378330585952341, guid: bf1d8496c5170d54988aa540ab1f61e8,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2120378330585952341, guid: bf1d8496c5170d54988aa540ab1f61e8,
         type: 3}
@@ -501,6 +607,11 @@ PrefabInstance:
       objectReference: {fileID: 8590672351933152598}
     - target: {fileID: 5595156069757210855, guid: b0306c306ffd5bd4e892b3baa7baf661,
         type: 3}
+      propertyPath: fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595156069757210855, guid: b0306c306ffd5bd4e892b3baa7baf661,
+        type: 3}
       propertyPath: ShootFrom
       value: 
       objectReference: {fileID: 1265087356}
@@ -508,6 +619,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SniperRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917135247848972685, guid: b0306c306ffd5bd4e892b3baa7baf661,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7917135247849078189, guid: b0306c306ffd5bd4e892b3baa7baf661,
         type: 3}
@@ -581,6 +697,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4729468908528458814, guid: 0107794f80b101240a8d011dce9903be,
         type: 3}
+      propertyPath: fireRate
+      value: 0.187
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729468908528458814, guid: 0107794f80b101240a8d011dce9903be,
+        type: 3}
       propertyPath: ShootFrom
       value: 
       objectReference: {fileID: 1265087356}
@@ -647,7 +768,7 @@ PrefabInstance:
     - target: {fileID: 6122399700137309061, guid: 0107794f80b101240a8d011dce9903be,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0107794f80b101240a8d011dce9903be, type: 3}

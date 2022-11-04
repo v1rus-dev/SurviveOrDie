@@ -5,19 +5,21 @@ namespace Enemy
     public class EnemyHealth : MonoBehaviour
     {
         [SerializeField] private float health = 100f;
+        [HideInInspector]
+        public bool isDead = false;
     
         // ReSharper disable Unity.PerformanceAnalysis
-        public void GetDamage(float damage)
+        public void GetDamage(float damage, Transform player)
         {
-            BroadcastMessage("OnDamageTaken");
+            BroadcastMessage("OnDamageTaken", player);
             health -= damage;
             if (health <= Mathf.Epsilon)
             {
-                Die();
+                isDead = true;
             }
         }
 
-        private void Die()
+        private void EnemyDie()
         {
             Destroy(gameObject);
         }

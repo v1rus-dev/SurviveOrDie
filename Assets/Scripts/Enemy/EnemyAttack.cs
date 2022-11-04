@@ -5,16 +5,16 @@ namespace Enemy
 {
     public class EnemyAttack : MonoBehaviour
     {
-        PlayerHealth playerHealth;
         [SerializeField] private float damage = 30;
         [SerializeField] private float multiplierByAttack = 1.3f;
-        
+
+        private TargetFinder _targetFinder;
         private float currentDamage;
         private bool damageIsMultiplied = false;
 
         void Start()
         {
-            playerHealth = FindObjectOfType<PlayerHealth>();
+            _targetFinder = GetComponent<TargetFinder>();
             currentDamage = damage;
         }
         
@@ -29,6 +29,8 @@ namespace Enemy
         // Called by Unity Animation Event
         public void TakeDamage()
         {
+            if (_targetFinder.Target == null) return;
+            PlayerHealth playerHealth = _targetFinder.Target.GetComponent<PlayerHealth>();
             if (playerHealth == null) return;
             playerHealth.TakeDamage(currentDamage);
             currentDamage = damage;

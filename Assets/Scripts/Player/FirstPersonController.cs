@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace Player
@@ -13,6 +14,7 @@ namespace Player
         [SerializeField] private float mass = 1f;
 
         private CharacterController _characterController;
+        private PhotonView _view;
 
         #region InputValues
 
@@ -37,6 +39,7 @@ namespace Player
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+            _view = GetComponent<PhotonView>();
         }
 
         // Start is called before the first frame update
@@ -56,12 +59,12 @@ namespace Player
             UpdateRotation();
             UpdateMovement();
         }
-        
+
         public void ChangeMouseSensitivity(float value)
         {
             mouseSensitivity = value;
         }
-        
+
         public void ResetMouseSensitivity()
         {
             mouseSensitivity = _originalMouseSensitivity;
@@ -82,9 +85,8 @@ namespace Player
 
                 isGround = true;
             }
-        
+
             _isGrounded = isGround;
-        
         }
 
         #endregion

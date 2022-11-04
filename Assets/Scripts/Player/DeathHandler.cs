@@ -1,4 +1,5 @@
 using UnityEngine;
+using Weapon;
 
 namespace Player
 {
@@ -8,6 +9,7 @@ namespace Player
     
         private void Start()
         {
+            gameOverCanvas = Instantiate(gameOverCanvas, GameObject.Find("UI").transform);
             SetCanvasEnabled(gameOverCanvas, false);
             DisableCursor();
             ChangeTime(false);
@@ -16,6 +18,8 @@ namespace Player
         public void HandleDeath()
         {
             SetCanvasEnabled(gameOverCanvas, true);
+            FindObjectOfType<WeaponSwitcher>().enabled = false;
+            FindObjectOfType<FirstPersonController>().enabled = false;
             EnableCursor();
             ChangeTime(true);
         }
@@ -27,7 +31,7 @@ namespace Player
         
         private static void SetCanvasEnabled(Canvas canvas, bool isEnabled)
         {
-            canvas.enabled = isEnabled;
+            canvas.gameObject.SetActive(isEnabled);
         }
         
         private void EnableCursor()

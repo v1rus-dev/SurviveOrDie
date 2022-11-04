@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace Player
@@ -9,6 +10,13 @@ namespace Player
 
         [SerializeField] private Transform LookAt;
         [SerializeField] private float MaxUseDistance = 3f;
+
+        private void Start()
+        {
+            //Instantiate in UI
+            UseText = Instantiate(UseText, GameObject.Find("UI").transform);
+            UseText.gameObject.SetActive(false);
+        }
 
         private void Update()
         {

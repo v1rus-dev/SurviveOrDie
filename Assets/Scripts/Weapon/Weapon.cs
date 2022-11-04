@@ -118,7 +118,7 @@ namespace Weapon
 
                 if (enemyHealth != null)
                 {
-                    enemyHealth.GetDamage(damage);
+                    enemyHealth.GetDamage(damage, playerHealth.gameObject.transform);
                 }
             }
             else

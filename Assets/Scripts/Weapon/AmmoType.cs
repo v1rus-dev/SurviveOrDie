@@ -10,6 +10,7 @@ namespace Weapon
         Shotgun,
         Sniper,
         Grenade,
-        Melee
+        Melee,
+        None
     }
 }

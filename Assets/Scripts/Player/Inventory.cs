@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Pickup;
 using UnityEngine;
 using Weapon;
 
@@ -27,6 +28,29 @@ namespace Player
         public int GetAmmoCount(AmmoType ammoType)
         {
             return _ammoDictionary[ammoType].AmmoAmount;
+        }
+
+        public void AddPickupItem(PickupItem pickupItem)
+        {
+            switch (pickupItem.PickupType)
+            {
+                case PickupType.Ammo:
+                    AddAmmo(pickupItem.AmmoType, pickupItem.CountElements);
+                    break;
+                case PickupType.Health:
+                    break;
+                case PickupType.Equipment:
+                    break;
+                case PickupType.Weapon:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        
+        private void AddAmmo(AmmoType ammoType, int ammoAmount)
+        {
+            _ammoDictionary[ammoType].IncreaseAmmo(ammoAmount);
         }
         
         private void InitAmmoDictionary()

@@ -51,7 +51,15 @@ namespace Weapon
         {
             fpsCamera.fieldOfView = standardZoom;
             isZoomedIn = false;
-            fpsController.ResetMouseSensitivity();
+            if (fpsController != null)
+            {
+                fpsController.ResetMouseSensitivity();
+            }
+        }
+
+        private void OnDisable()
+        {
+            ZoomOut();
         }
     }
 }

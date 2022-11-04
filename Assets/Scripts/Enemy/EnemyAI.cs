@@ -10,6 +10,7 @@ namespace Enemy
         [SerializeField] private float turnSpeed = 5f;
 
         private Transform target;
+        public Transform Target => target;
         private bool isReachingTarget = false;
 
         private NavMeshAgent _navMeshAgent;
@@ -24,16 +25,6 @@ namespace Enemy
         // Start is called before the first frame update
         void Start()
         {
-            Tags[] tags = FindObjectsOfType<Tags>();
-            foreach (var tag in tags)
-            {
-                if (tag.HasTagByName("Player"))
-                {
-                    target = tag.gameObject.transform;
-                    break;
-                }
-            }
-
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
         }
@@ -41,6 +32,13 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
+
+            if (target == null)
+            {
+                FindTarget();
+                return;
+            }
+            
             distanceToTarget = Vector3.Distance(target.position, transform.position);
 
             if (isProvokedByShooting)
@@ -65,6 +63,19 @@ namespace Enemy
             else
             {
                 StopChasingTarget();
+            }
+        }
+
+        private void FindTarget()
+        {
+            Tags[] tags = FindObjectsOfType<Tags>();
+            foreach (var tag in tags)
+            {
+                if (tag.HasTagByName("Player"))
+                {
+                    target = tag.gameObject.transform;
+                    break;
+                }
             }
         }
 
