@@ -1,54 +1,57 @@
 using Player;
 using UnityEngine;
 
-public class WeaponZoom : MonoBehaviour
+namespace Weapon
 {
-    [SerializeField]
-    private Camera fpsCamera;
-    [SerializeField]
-    private float standardZoom = 60f;
-    [SerializeField]
-    private float zoomedInZoom = 20f;
-
-    [SerializeField]
-    private float mouseSensitivityIsZoomedIn = 1f;
-    
-    private FirstPersonController fpsController;
-    
-    private bool isZoomedIn = false;
-
-    private void Start()
+    public class WeaponZoom : MonoBehaviour
     {
-        fpsController = GetComponentInParent<FirstPersonController>();
-        fpsCamera.fieldOfView = standardZoom;
-    }
+        [SerializeField]
+        private Camera fpsCamera;
+        [SerializeField]
+        private float standardZoom = 60f;
+        [SerializeField]
+        private float zoomedInZoom = 20f;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
+        [SerializeField]
+        private float mouseSensitivityIsZoomedIn = 1f;
+    
+        private FirstPersonController fpsController;
+    
+        private bool isZoomedIn = false;
+
+        private void Start()
         {
-            if (isZoomedIn)
+            fpsController = GetComponentInParent<FirstPersonController>();
+            fpsCamera.fieldOfView = standardZoom;
+        }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(1))
             {
-                ZoomOut();
-            }
-            else
-            {
-                ZoomIn();
+                if (isZoomedIn)
+                {
+                    ZoomOut();
+                }
+                else
+                {
+                    ZoomIn();
+                }
             }
         }
-    }
     
-    private void ZoomIn()
-    {
-        fpsCamera.fieldOfView = zoomedInZoom;
-        isZoomedIn = true;
-        fpsController.ChangeMouseSensitivity(mouseSensitivityIsZoomedIn);
-    }
+        private void ZoomIn()
+        {
+            fpsCamera.fieldOfView = zoomedInZoom;
+            isZoomedIn = true;
+            fpsController.ChangeMouseSensitivity(mouseSensitivityIsZoomedIn);
+        }
     
-    private void ZoomOut()
-    {
-        fpsCamera.fieldOfView = standardZoom;
-        isZoomedIn = false;
-        fpsController.ResetMouseSensitivity();
+        private void ZoomOut()
+        {
+            fpsCamera.fieldOfView = standardZoom;
+            isZoomedIn = false;
+            fpsController.ResetMouseSensitivity();
+        }
     }
 }

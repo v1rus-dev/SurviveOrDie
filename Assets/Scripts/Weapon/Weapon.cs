@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using Enemy;
 using Player;
 using UnityEngine;
@@ -20,8 +18,8 @@ namespace Weapon
         [SerializeField] private float maxDistance;
         [SerializeField] [Range(0, 2f)] private float fireRate;
 
-        [Header("Weapon Utils")] [SerializeField]
-        private ParticleSystem muzzleFlash;
+        [Header("Weapon Utils")] 
+        [SerializeField] private ParticleSystem muzzleFlash;
 
         [SerializeField] private AudioClip shootSound;
         [SerializeField] private GameObject hitEffect;

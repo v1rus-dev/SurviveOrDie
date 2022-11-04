@@ -58,6 +58,8 @@ sysinfo.txt
 # Idea
 .idea/
 
+/Assets/Plugins/
+
 # Crashlytics generated file
 crashlytics-build.properties
 
